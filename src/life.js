@@ -68,7 +68,7 @@ const checkNeighbors = (board, row, col) => {
     return sum;
 }
 
-export async function run() {
+async function run() {
     let board = createBoard(6,6)
     board[1][1] = 1;
     board[1][2] = 1;

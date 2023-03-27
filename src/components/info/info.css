@@ -2,12 +2,12 @@
     display:flex;
     align-items: center;
     justify-content: center;
-    color: rgb(102, 106, 112);
+    color: rgb(142,148,156);
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: rgb(142, 148, 156, 0.2);
-    border: 2px solid rgb(142, 148, 156, 0.3);
+    background-color: rgba(209, 213, 219, 0.85);
+    border: 3px solid rgb(142, 148, 156);
     position: absolute;
     bottom:30px;
     right:30px;
@@ -32,7 +32,7 @@
     width: 50%;
     z-index: 10;
     background-color:rgb(255, 255, 255);
-    border: 3px solid rgb(142, 148, 156, 0.3);
+    border: 3px solid rgb(142,148,156);
     border-radius: 10px;
     overflow-y: auto;
 }
