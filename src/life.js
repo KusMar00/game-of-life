@@ -2,7 +2,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-const createBoard = (rows, cols) => {
+export const createBoard = (rows, cols) => {
     let arr = [];
     for (let i = 0; i < rows; i++) {
         arr[i] = [];
@@ -13,7 +13,7 @@ const createBoard = (rows, cols) => {
     return arr;
 }
 
-const updateBoard = (board) => {
+export const updateBoard = (board) => {
     let newBoard = createBoard(board.length, board[0].length);
     for (let i = 0; i < board.length; i++) {
         for (let j = 0; j < board[i].length; j++) {
@@ -52,11 +52,11 @@ const updateBoard = (board) => {
 }
 
 const checkNeighbors = (board, row, col) => {
-    sum = 0;
+    var sum = 0;
     for (let i = -1; i < 2; i++) {
         for (let j = -1; j < 2; j++) {
-            nRow = i+row;
-            nCol = j+col;
+            var nRow = i+row;
+            var nCol = j+col;
 
             // Check that cell is in bounds
             if ((nRow >= 0 && nRow < board.length) && (nCol >= 0 && nCol < board.length)) {
@@ -68,7 +68,7 @@ const checkNeighbors = (board, row, col) => {
     return sum;
 }
 
-async function run() {
+export async function run() {
     let board = createBoard(6,6)
     board[1][1] = 1;
     board[1][2] = 1;
@@ -82,7 +82,5 @@ async function run() {
         await sleep(1000);
     }
 }
-
-run();
 
 
