@@ -69,18 +69,25 @@ const checkNeighbors = (board, row, col) => {
 }
 
 async function run() {
-    let board = createBoard(6,6)
+    let board = createBoard(20,20)
     board[1][1] = 1;
     board[1][2] = 1;
     board[2][1] = 1;
     board[3][4] = 1;
     board[4][3] = 1;
     board[4][4] = 1;
+
+    // Blinker
+    board[15][1] = 1;
+    board[15][2] = 1;
+    board[15][3] = 1;
     while(true) {
         console.table(board);
         board = updateBoard(board);
         await sleep(1000);
     }
 }
+
+run();
 
 
