@@ -70,10 +70,6 @@ const Board = () => {
     setLoopMutex(!loopMutex);
   };
 
-  const sleep = (milliseconds) => {
-    return new Promise((resolve) => setTimeout(resolve, milliseconds));
-  };
-
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   const handleResize = () => {

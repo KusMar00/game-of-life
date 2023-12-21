@@ -81,6 +81,11 @@ async function run() {
     board[15][1] = 1;
     board[15][2] = 1;
     board[15][3] = 1;
+    
+    board[1][19] = 1;
+    board[2][19] = 1;
+    board[3][19] = 1;
+
     while(true) {
         console.table(board);
         board = updateBoard(board);
