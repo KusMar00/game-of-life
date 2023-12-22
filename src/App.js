@@ -2,11 +2,10 @@ import "./App.css";
 import Controls from "./components/controls/Controls";
 import Info from "./components/info/Info";
 import Board from "./components/board/Board";
+import useWindowDimensions from "./WindowDimensions";
 import { useCallback, useState, useRef } from "react";
 import { produce } from "immer";
 
-const numCols = 50;
-const numRows = 50;
 const operations = [
   [0, -1],
   [0, 1],
@@ -18,15 +17,20 @@ const operations = [
   [1, -1],
 ];
 
-const generateEmptyGrid = () => {
-  const rows = [];
-  for (let i = 0; i < numRows; i++) {
-    rows.push(Array.from(Array(numCols), () => 0));
-  }
-  return rows;
-};
-
 function App() {
+  const { height, width } = useWindowDimensions();
+  const [cellSize, setCellSize] = useState(15);
+  const [numCols, setNumCols] = useState(Math.floor(width / cellSize));
+  const [numRows, setNumRows] = useState(Math.floor(height / cellSize));
+
+  const generateEmptyGrid = () => {
+    const rows = [];
+    for (let i = 0; i < numRows; i++) {
+      rows.push(Array.from(Array(numCols), () => 0));
+    }
+    return rows;
+  };
+
   const [grid, setGrid] = useState(() => {
     return generateEmptyGrid();
   });
@@ -99,7 +103,9 @@ function App() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: `repeat(${numCols}, 20px)`,
+          gridTemplateColumns: `repeat(${numCols}, ${cellSize}px)`,
+          height: { height },
+          width: { width },
         }}
       >
         {grid.map((rows, i) =>
@@ -113,8 +119,8 @@ function App() {
               }}
               key={`${i}-${j}`}
               style={{
-                width: 20,
-                height: 20,
+                width: cellSize,
+                height: cellSize,
                 backgroundColor: grid[i][j] ? "grey" : "white",
                 border: "solid 1px black",
               }}
